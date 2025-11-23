@@ -16,17 +16,6 @@ Ensure all necessary development libraries are installed:
 sudo apt install libgmp-dev libmpfr-dev libeigen3-dev libboost-dev flex libscotch-dev libscotchmetis-dev libcgal-dev
 #+END_SRC
 
-** Handle Flex Version Compatibility (for versions > 2.6.x)
-If using a newer version of =flex=, patch the lexer files to handle version checks:
-
-#+BEGIN_SRC bash
-# Check flex version
-flex --version
-
-# Patch affected files
-find src applications -name "*.L" -type f | xargs sed -i -e 's=$$YY_FLEX_SUBMINOR_VERSION$$=YY_FLEX_MINOR_VERSION < 6 \&\& $$1]='
-#+END_SRC
-
 ** Note on =-lCGAL= Linker Flag (CGAL >= 5.0)
 Since CGAL version 5.0, the library is header-only by default.
 - You no longer need to compile or link against =libCGAL.so=.
