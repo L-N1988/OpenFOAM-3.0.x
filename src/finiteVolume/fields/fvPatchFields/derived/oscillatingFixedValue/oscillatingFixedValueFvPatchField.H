@@ -210,27 +210,27 @@ public:
                 return refValue_;
             }
 
-            //- Return amplitude
-            scalar amplitude() const
-            {
-                return amplitude_;
-            }
+            // //- Return amplitude
+            // scalar amplitude() const
+            // {
+            //     return amplitude_;
+            // }
 
-            scalar& amplitude()
-            {
-                return amplitude_;
-            }
+            // scalar& amplitude()
+            // {
+            //     return amplitude_;
+            // }
 
-            //- Return frequency
-            scalar frequency() const
-            {
-                return frequency_;
-            }
+            // //- Return frequency
+            // scalar frequency() const
+            // {
+            //     return frequency_;
+            // }
 
-            scalar& frequency()
-            {
-                return frequency_;
-            }
+            // scalar& frequency()
+            // {
+            //     return frequency_;
+            // }
 
 
         // Mapping functions

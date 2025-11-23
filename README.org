@@ -7,6 +7,41 @@
 #+OPTIONS: author:nil ^:{}
 # Copyright (c) 2015 OpenFOAM Foundation.
 
+* Attention: Resolving CGAL and Build Issues
+
+** Install (part of) Required Dependencies
+Ensure all necessary development libraries are installed:
+
+#+BEGIN_SRC bash
+sudo apt install libgmp-dev libmpfr-dev libeigen3-dev libboost-dev flex libscotch-dev libscotchmetis-dev libcgal-dev
+#+END_SRC
+
+** Handle Flex Version Compatibility (for versions > 2.6.x)
+If using a newer version of =flex=, patch the lexer files to handle version checks:
+
+#+BEGIN_SRC bash
+# Check flex version
+flex --version
+
+# Patch affected files
+find src applications -name "*.L" -type f | xargs sed -i -e 's=$$YY_FLEX_SUBMINOR_VERSION$$=YY_FLEX_MINOR_VERSION < 6 \&\& $$1]='
+#+END_SRC
+
+** Note on =-lCGAL= Linker Flag (CGAL >= 5.0)
+Since CGAL version 5.0, the library is header-only by default.
+- You no longer need to compile or link against =libCGAL.so=.
+- The =-lCGAL= linker flag is **not required** in =./wmake/rules/General/CGAL=.
+- Simply include CGAL headers in your code; all functionality is instantiated at compile time.
+
+** Handling "foamy*Mesh" Compilation Errors
+The =foamy*Mesh= applications are rarely used and may fail to build due to outdated dependencies or compatibility issues.
+
+To skip these without stopping the entire build:
+#+BEGIN_SRC bash
+./Allwmake -k
+#+END_SRC
+The =-k= (or =--keep-going=) option tells =make= to continue building other targets even after errors.
+
 * About OpenFOAM
   OpenFOAM is a free, open source computational fluid dynamics (CFD) software
   package released by the OpenFOAM Foundation. It has a large user base across

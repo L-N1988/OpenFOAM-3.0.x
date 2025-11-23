@@ -29,6 +29,9 @@ License
 
 #include <signal.h>
 #include <unistd.h>
+#ifdef __linux__
+#  include <sys/sysmacros.h> // Fixes major/minor/makedev declarations
+#endif
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
