@@ -13,7 +13,7 @@
 Ensure all necessary development libraries are installed:
 
 #+BEGIN_SRC bash
-sudo apt install libgmp-dev libmpfr-dev libeigen3-dev libboost-dev flex libscotch-dev libscotchmetis-dev libcgal-dev
+sudo apt install libgmp-dev libmpfr-dev libeigen3-dev libboost-dev flex libscotch-dev libscotchmetis-dev libcgal-dev libptscotch-dev
 #+END_SRC
 
 ** Note on =-lCGAL= Linker Flag (CGAL >= 5.0)
